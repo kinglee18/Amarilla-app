@@ -6,6 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { InformacionProvider } from '../providers/informacion/informacion';
+
+import { Geolocation } from '@ionic-native/geolocation';
+import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { HTTP } from '@ionic-native/http';
+import { HttpModule } from '@angular/http';
+
+
 
 @NgModule({
   declarations: [
@@ -14,7 +24,8 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +35,13 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    InformacionProvider,
+    Geolocation,
+    CallNumber,
+    EmailComposer,
+    InAppBrowser,
+    HTTP
   ]
 })
 export class AppModule {}

@@ -1,0 +1,3 @@
+ionic cordova build android --prod --release -- -- --versionCode=61
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /home/eha/Documentos/se_ama/keystoresSeccionAmarilla/seccamKey  /home/eha/Documentos/APP-SE/app-se-ok/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk seccam
+zipalign -v 4 /home/eha/Documentos/APP-SE/app-se-ok/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk seccam.apk

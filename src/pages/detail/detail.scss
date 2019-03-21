@@ -1,0 +1,34 @@
+page-detail {
+    .negocio {
+        width: 100%;
+    }
+
+    .negocio img {
+        height: 40px;
+    }
+
+    .item-td {
+        white-space: normal;
+    }
+
+    /*.item-md.item-block .item-inner {
+        padding-right: 8px;
+        border-bottom: 2px solid #fd0;
+    }*/
+
+    .detail-actions {
+        .item-md.item-block .item-inner {
+            padding-right: 8px;
+            border-bottom:  1px solid #ccc;
+        }
+
+        button {
+            color: #488aff;
+        }
+    }
+
+    #mapa_detail {
+        width: 100%;
+        height: 300px;
+    }
+}

@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Resultados Encontrados</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="_info.resultados">
+    <ion-card
+      *ngFor="let op of _info.info.list"
+      (click)="openDetail(op)"
+      no-padding
+    >
+      <ion-row>
+        <ion-col col-4 text-center *ngIf="op.logo" class="logo">
+          <img [src]="op.logo" alt="logo" width="50px" />
+        </ion-col>
+        <ion-col col-4 text-center *ngIf="!op.logo" class="logo">
+          <img
+            src="https://s3.amazonaws.com/seccion/card.png"
+            alt="logo"
+            width="50px"
+          />
+        </ion-col>
+        <ion-col col-8 padding-vertical text-center>
+          <h2 class="titu" padding-horizontal>{{ op.name }}</h2>
+        </ion-col>
+      </ion-row>
+      <ion-item *ngIf="op.address">
+        <ion-icon name="map" color="gris" item-start large></ion-icon>
+        <p class="dir" text-capitalize text-justify>{{ op.address }}</p>
+      </ion-item>
+
+      <ion-item *ngIf="op.lat && _info.info.coords.lat">
+        <span *ngIf="getDist(op.lat, op.lng).status" item-start class="dist"
+          >A {{ getDist(op.lat, op.lng).result }}</span
+        >
+      </ion-item>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="goAddList($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+  <div *ngIf="!_info.resultados">
+    <h2 text-center>{{ _info.msg }}</h2>
+    <img src="assets/imgs/error.jpg" alt="" />
+  </div>
+</ion-content>

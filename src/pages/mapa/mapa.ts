@@ -1,0 +1,87 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { InformacionProvider } from '../../providers/informacion/informacion';
+
+@IonicPage()
+@Component({
+  selector: 'page-mapa',
+  templateUrl: 'mapa.html',
+})
+export class MapaPage {
+
+  lat = 43.0741904;
+  lng = -89.3809802;
+  name;
+  address;
+
+  latU;
+  lngU;
+  dir
+
+  urlIcon = {
+      url: './assets/imgs/ico_seccion.png',
+      scaledSize: {
+          width: 41,
+          height: 56
+      }
+  }
+
+  public renderOptions = {
+      suppressMarkers: true,
+  }
+
+  public markerOptions = {}
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public _info:InformacionProvider) {
+      this.lat = this.navParams.get('lat');
+      this.lng = this.navParams.get('lng');
+      this.name = this.navParams.get('name');
+      this.address = this.navParams.get('address');
+
+      this.markerOptions = {
+        origin: {
+            icon: './assets/imgs/person0.png',
+            label: 'YO',
+        },
+        destination: {
+            icon: './assets/imgs/ico_seccion.png',
+            label: this.name,
+            infoWindow: this.name+'<br>'+this.address
+            //opacity: 0.8,
+        },
+      }
+
+      this.latU = this._info.info.coords.lat;
+      this.lngU = this._info.info.coords.lng;
+
+      this.dir = {
+        destination: { lat: this.lat, lng: this.lng },
+        origin: { lat: this.latU, lng: this.lngU }
+      }
+
+      
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad Mapa1Page');
+    //this.caminar();
+  }
+
+  async caminar() {
+    for(let i = 0;i<20;i++) {
+        this._info.info.coords.lat = this._info.info.coords.lat + 0.001;
+        this._info.info.coords.lng = this._info.info.coords.lng + 0.001;
+        this.dir = {
+            destination: { lat: this.lat, lng: this.lng },
+            origin: { lat: this._info.info.coords.lat, lng: this._info.info.coords.lng }
+        }
+        await this.sleep(3)
+    }
+  }
+
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms*1000));
+  }
+
+}
