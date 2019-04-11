@@ -4,6 +4,12 @@ import { LoadingController } from "ionic-angular";
 
 @Injectable()
 export class InformacionProvider {
+
+  public urls = {
+    position: "http://wsse.seccionamarilla.com/SearchEngine.svc/REST/PUNCTUALSEARCHLISTING/${texto}/${lat}/${lng}/80/${page}/10/2/1/IPHONEADSA/bEJjb0hvK1U2Vm1uaHQyVE5wMkdDSkY5cE11RiszSlI=",
+    normal: "https://wsseo.seccionamarilla.com.mx/Service.svc/REST/ListingsNormal"
+  };
+
   public info = {
     search: "",
     texto: "",
@@ -27,10 +33,7 @@ export class InformacionProvider {
   resultados: boolean = true;
   dataAll;
 
-  constructor(
-    public loadingCtrl: LoadingController,
-    public http2: Http
-  ) {}
+  constructor(public loadingCtrl: LoadingController, public http2: Http) {}
 
   getNegocios1(texto, page, ev) {
     this.resultados = true;
@@ -50,14 +53,15 @@ export class InformacionProvider {
 
     let obs = this.http2
       .get(
-        `http://wsse.seccionamarilla.com/SearchEngine.svc/REST/PUNCTUALSEARCHLISTING/${texto}/${lat}/${lng}/80/${page}/10/2/1/IPHONEADSA/bEJjb0hvK1U2Vm1uaHQyVE5wMkdDSkY5cE11RiszSlI=`
-      )
+        this.urls.position
+        .replace("${texto}",texto)
+        .replace("${lat}",lat)
+        .replace("${lng}", lng)
+        .replace("${page}", page)
+        )
       .subscribe(
         resp => {
           resp = resp.json();
-          //Promise.all([this.http.setSSLCertMode ('nocheck'),this.http.get('`http://wsse.seccionamarilla.com/SearchEngine.svc/REST/PUNCTUALSEARCHLISTING/${texto}/${lat}/${lng}/80/${page}/10/2/1/IPHONEADSA/bEJjb0hvK1U2Vm1uaHQyVE5wMkdDSkY5cE11RiszSlI=`',{},{})])
-          //.then((data) => {
-          //let resp = data[1].data;
           if (
             Object.keys(resp).length > 0 &&
             resp.hasOwnProperty("ListRes") &&
@@ -66,8 +70,6 @@ export class InformacionProvider {
             let total = parseInt(resp["totalPages"]);
             this.info.total = total;
             let datos = resp["ListRes"];
-            //console.log(datos);
-
             if (this.info.page == 1) {
               this.info.list = this.formatNeg2Coords(datos);
               load.dismiss();
@@ -77,7 +79,6 @@ export class InformacionProvider {
               );
               ev.complete();
             }
-            //console.log(this.info.list);
           }
 
           if (page == 1 && this.info.list.length == 0) {
@@ -87,12 +88,10 @@ export class InformacionProvider {
             this.resultados = false;
             load.dismiss();
           }
-          //load.dismiss();
           obs.unsubscribe();
         },
         err => {
-          this.msg =
-            "No se tiene acceso a internet :(" /*+JSON.stringify(err)*/;
+          this.msg = "No se tiene acceso a internet :(";
           this.resultados = false;
           load.dismiss();
         }
@@ -125,13 +124,11 @@ export class InformacionProvider {
     let body2 = JSON.stringify(body);
     let obs = this.http2
       .post(
-        `https://wsseo.seccionamarilla.com.mx/Service.svc/REST/ListingsNormal`,
+        this.urls.normal,
         body2
       )
       .subscribe(
         resp => {
-          //resp = resp.json()
-          //console.log(resp.json())
           let data = resp.json();
           if (
             Object.keys(data).length > 0 &&
@@ -139,7 +136,6 @@ export class InformacionProvider {
             data["AMResults"].hasOwnProperty("AMResult")
           ) {
             let datos = data["AMResults"]["AMResult"]["Listings"]["ListRes"];
-            //console.log(datos);
             if (this.info.page == 1) {
               let num =
                 parseInt(
@@ -153,7 +149,6 @@ export class InformacionProvider {
               this.info.list = this.info.list.concat(this.formatNeg2(datos));
               ev.complete();
             }
-            //console.log(this.info.list);
           }
 
           if (page == 1 && this.info.list.length == 0) {
@@ -164,8 +159,7 @@ export class InformacionProvider {
           obs.unsubscribe();
         },
         err => {
-          this.msg =
-            "No se tiene acceso a internet :(" /*+JSON.stringify(err)*/;
+          this.msg = "No se tiene acceso a internet :(";
           this.resultados = false;
           load.dismiss();
         }
@@ -180,23 +174,14 @@ export class InformacionProvider {
         let lat, lng;
         lat = this.info.coords.lat.toString();
         lng = this.info.coords.lng.toString();
-        /*body = {
-                "motorIp":"172.18.1.122:5110",
-                "systemName":"MexGeoSingleBoxSystem",
-                "searchTerms":"hoteles en df",
-                "lat": lat,
-                "lon": lng,
-                "radius":12,
-                "pageNumber":page,
-                "results":10,
-                "format":0
-            }
-    
-            let body2 = JSON.stringify(body);*/
 
         let obs = this.http2
           .get(
-            `http://wsse.seccionamarilla.com/SearchEngine.svc/REST/PUNCTUALSEARCHLISTING/${texto}/${lat}/${lng}/80/${page}/10/2/1/IPHONEADSA/bEJjb0hvK1U2Vm1uaHQyVE5wMkdDSkY5cE11RiszSlI=`
+            this.urls.position
+            .replace("${texto}",texto)
+            .replace("${lat}",lat)
+            .replace("${lng}", lng)
+            .replace("${page}", page)
           )
           .subscribe(resp => {
             resp = resp.json();
@@ -209,9 +194,7 @@ export class InformacionProvider {
               this.info.total = total;
               let datos = resp["ListRes"];
               console.log(datos);
-              //this.info.list = this.formatNeg2Coords(datos);
               if (this.info.page == 1) {
-                //loading.dismiss();
                 this.info.list = this.formatNeg2Coords(datos);
               } else
                 this.info.list = this.info.list.concat(
@@ -221,35 +204,6 @@ export class InformacionProvider {
             }
             obs.unsubscribe();
           });
-
-        /*this.http.get(`http://wsse.seccionamarilla.com/SearchEngine.svc/REST/PUNCTUALSEARCHLISTING/${texto}/${lat}/${lng}/80/${page}/10/2/1/IPHONEADSA/bEJjb0hvK1U2Vm1uaHQyVE5wMkdDSkY5cE11RiszSlI=`,{},{})
-            .then((resp) => {
-                //this.dataAll = 'Exito: '+JSON.stringify(resp);
-                let data = JSON.parse(resp.data);
-                if(Object.keys(data).length > 0 && data.hasOwnProperty('ListRes') && data.hasOwnProperty('totalPages')) {
-                    let total = parseInt(data['totalPages']);
-                    this.info.total = total;
-                    let datos = data['ListRes']
-                    console.log(datos);
-                    //this.info.list = this.formatNeg2Coords(datos);
-                    if(this.info.page == 1) {
-                        //loading.dismiss();
-                        this.info.list = this.formatNeg2Coords(datos);
-                    }
-                    else this.info.list = this.info.list.concat(this.formatNeg2Coords(datos))
-                    console.log(this.info.list);
-                    resolve();
-    
-                }
-                else {
-                    resolve();
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                //this.dataAll = 'Error: '+JSON.stringify(err);
-                resolve();
-            })*/
       } else {
         body = {
           motorIp: "172.18.1.122:5110",
@@ -265,12 +219,10 @@ export class InformacionProvider {
         let body2 = JSON.stringify(body);
         let obs = this.http2
           .post(
-            `https://wsseo.seccionamarilla.com.mx/Service.svc/REST/ListingsNormal`,
+            this.urls.normal,
             body2
           )
           .subscribe(resp => {
-            //resp = resp.json()
-            //console.log(resp.json())
             let data = resp.json();
             if (
               Object.keys(data).length > 0 &&
@@ -278,9 +230,7 @@ export class InformacionProvider {
               data["AMResults"].hasOwnProperty("AMResult")
             ) {
               let datos = data["AMResults"]["AMResult"]["Listings"]["ListRes"];
-              //console.log(datos);
               if (this.info.page == 1) {
-                //loading.dismiss();
                 let num =
                   parseInt(
                     data["AMResults"]["AMResult"]["Listings"][
@@ -292,33 +242,10 @@ export class InformacionProvider {
                 this.info.list = this.formatNeg2(datos);
               } else
                 this.info.list = this.info.list.concat(this.formatNeg2(datos));
-              //console.log(this.info.list);
-            } else {
             }
             obs.unsubscribe();
             resolve();
           });
-        /*this.http.post('https://wsseo.seccionamarilla.com.mx/Service.svc/REST/ListingsNormal',body2,{}).then((resp) => {
-                let data = JSON.parse(resp.data);
-                if(Object.keys(data).length > 0 && data.hasOwnProperty('AMResults') && data['AMResults'].hasOwnProperty('AMResult')) {
-                    let datos = data['AMResult']['AMResult']['Listings']['ListRes'];
-                    console.log(datos);
-                    if(this.info.page == 1) {
-                        //loading.dismiss();
-                        this.info.list = this.formatNeg2(datos);
-                    }
-                    else this.info.list = this.info.list.concat(this.formatNeg2(datos))
-                    //console.log(this.info.list);
-                    resolve();
-    
-                }
-                else {
-                    resolve();
-                }
-            }).catch((err) => {
-                console.log(err);
-                resolve();
-            })*/
       }
     });
   }
@@ -347,15 +274,16 @@ export class InformacionProvider {
         result["statename"] ||
         result["zip"]
       ) {
-        if (result["fullstreet"] && result["fullstreet"] !== null) address = result["fullstreet"];
+        if (result["fullstreet"] && result["fullstreet"] !== null)
+          address = result["fullstreet"];
         if (result["colony"]) address += ", " + result["colony"];
         if (result["physicalcity"]) address += ", " + result["physicalcity"];
         if (result["statename"]) address += ", " + result["statename"];
         if (result["zip"]) address += ", CP. " + result["zip"];
       }
-      if (address.charAt(0) === ','){
-          address = address.replace(',','');
-          address = address.trim();
+      if (address.charAt(0) === ",") {
+        address = address.replace(",", "");
+        address = address.trim();
       }
       let logo = null;
       let urlGrafico = "https://graficos.seccionamarilla.com.mx";

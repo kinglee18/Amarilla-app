@@ -6,7 +6,7 @@ import {
   Platform
 } from "ionic-angular";
 import { InformacionProvider } from "../../providers/informacion/informacion";
-import { Geolocation } from "@ionic-native/geolocation";
+import { Geolocation } from '@ionic-native/geolocation';
 import { MenuController } from "ionic-angular";
 
 import * as moment from "moment";
@@ -32,20 +32,14 @@ export class HomePage {
   }
 
   getUb() {
-    this.geolocation
+     this.geolocation
       .getCurrentPosition()
-      .then(resp => {
+      .then((resp) => {
         this._info.info.coords.lat = resp.coords.latitude;
         this._info.info.coords.lng = resp.coords.longitude;
-      })
-      .catch(error => {
-        console.log("Error getting location", error);
-      });
-    let watch = this.geolocation.watchPosition();
-    watch.subscribe(data => {
-      this._info.info.coords.lat = data.coords.latitude;
-      this._info.info.coords.lng = data.coords.longitude;
-    });
+       }).catch((error) => {
+         console.log('Error getting location', error);
+       });
   }
 
   openSearch() {
