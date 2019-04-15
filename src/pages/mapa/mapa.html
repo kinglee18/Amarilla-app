@@ -1,37 +1,18 @@
-
 <ion-header>
-
   <ion-navbar>
-    <ion-title>{{name}}</ion-title>
+    <ion-title>{{ name }}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content>
-
   <agm-map>
     <agm-direction
-    [renderOptions]="renderOptions" 
-    [markerOptions]="markerOptions"
-    [origin]="dir.origin" 
-    [destination]="dir.destination"
-    [panel]="calles"
+      [renderOptions]="renderOptions"
+      [markerOptions]="markerOptions"
+      [origin]="dir.origin"
+      [destination]="dir.destination"
+      [panel]="calles"
     ></agm-direction>
   </agm-map>
   <div #calles></div>
-  <!--<agm-map [latitude]="lat" [longitude]="lng">
-    <agm-direction
-      [renderOptions]="renderOptions" 
-      [markerOptions]="markerOptions"
-      [origin]="dir.origin" 
-      [destination]="dir.destination"
-      [panel]="calles"
-      ></agm-direction>
-  </agm-map>
-  <div #calles></div>-->
-  
-
- 
-  
 </ion-content>

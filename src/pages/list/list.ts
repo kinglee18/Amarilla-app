@@ -19,8 +19,6 @@ export class ListPage {
   ) {}
 
   ionViewDidLoad() {
-    console.log("ionViewDidLoad ListPage");
-
     if (this._info.info.coords.lat && this._info.info.coords.lng) {
       this._info.getNegocios1(
         this._info.info.texto,
@@ -33,16 +31,6 @@ export class ListPage {
         this._info.info.page,
         null
       );
-    /*this.load =  this._info.loadingCtrl.create({
-      content: 'Cargando...'
-    });
-
-    this.load.present();
-    this._info.getNegociosSE(this._info.info.texto,this._info.info.page).then(() => {
-      if(this._info.info.list.length == 0) this.resultados = false;
-      
-      this.load.dismiss();
-    });*/
   }
 
   ionViewWillUnload() {
@@ -69,10 +57,6 @@ export class ListPage {
           this._info.info.page,
           ev
         );
-
-      /*this._info.getNegociosSE(this._info.info.texto,this._info.info.page).then(() => {
-        ev.complete();
-      });*/
     } else {
       ev.complete();
     }
@@ -100,9 +84,6 @@ export class ListPage {
       if (dist > 20) status = false;
       result = a + " Km";
     }
-
-    //console.log('Distancia: ',dist)
-
     return {
       status,
       result

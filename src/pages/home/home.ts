@@ -46,19 +46,10 @@ export class HomePage {
     this.modalCtrl.create("SearchPage").present();
   }
 
-  getTime(valor) {
-    let tiempo = valor.split(" ");
-    return moment(tiempo[0]).fromNow();
-  }
-
   goDirect(texto) {
     this._info.info.page = 1;
     this._info.info.texto = texto;
     this._info.getNegociosSE(texto, this._info.info.page);
     this.navCtrl.push("ListPage");
-  }
-
-  openMenu() {
-    this.menuCtrl.toggle();
   }
 }

@@ -1,135 +1,69 @@
-<!--
-  Generated template for the HomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-
     <ion-grid>
       <ion-row>
-        <ion-col col-3 >
-          <!--<ion-buttons start>
-            <button ion-button icon-only (click)="openMenu()"> 
-              <ion-icon name="menu"></ion-icon>
-            </button>
-          </ion-buttons>-->
+        <ion-col col-3> </ion-col>
+        <ion-col col-6>
+          <img src="assets/imgs/logo-se.png" alt="" width="100%" />
         </ion-col>
-        <ion-col col-6 >
-          <img src="assets/imgs/logo-se.png" alt="" width="100%">
-        </ion-col>
-        <ion-col col-3 >
-          <!--<ion-buttons end>
-            <button ion-button icon-only>
-              <ion-icon name="navigate"></ion-icon>
-            </button>
-          </ion-buttons>
-          -->
-        </ion-col>
+        <ion-col col-3> </ion-col>
       </ion-row>
     </ion-grid>
-    
   </ion-navbar>
-
-  
-
 </ion-header>
 
-
-
-
 <ion-content padding>
-
   <ion-menu [content]="mycontent">
     <ion-content>
-      <ion-list>
-      </ion-list>
+      <ion-list> </ion-list>
     </ion-content>
   </ion-menu>
-  
+
   <div class="card-background-page">
     <ion-card (click)="openSearch()">
-      <img src="assets/imgs/principal.jpg"/>
-      <!--<div class="card-title">Bienvenido</div>
-      <div class="card-subtitle">41 Listings</div>-->
+      <img src="assets/imgs/principal.jpg" />
     </ion-card>
   </div>
 
-  <div class="card-background-page2" >
+  <div class="card-background-page2">
     <ion-grid no-padding>
       <ion-row>
         <ion-col col-6>
           <ion-card (click)="goDirect('bares')">
-            <img src="assets/imgs/bares.jpg"/>
+            <img src="assets/imgs/bares.jpg" />
           </ion-card>
         </ion-col>
         <ion-col col-6>
           <ion-card (click)="goDirect('cafeterias')">
-            <img src="assets/imgs/cafeterias.jpg"/>
+            <img src="assets/imgs/cafeterias.jpg" />
           </ion-card>
         </ion-col>
         <ion-col col-6>
           <ion-card (click)="goDirect('comida mexicana')">
-            <img src="assets/imgs/comida_mexicana.jpg"/>
+            <img src="assets/imgs/comida_mexicana.jpg" />
           </ion-card>
         </ion-col>
         <ion-col col-6>
           <ion-card (click)="goDirect('comida saludable')">
-            <img src="assets/imgs/comida_saludable.jpg"/>
+            <img src="assets/imgs/comida_saludable.jpg" />
           </ion-card>
         </ion-col>
         <ion-col col-6>
           <ion-card (click)="goDirect('deportes')">
-            <img src="assets/imgs/deportes.jpg"/>
+            <img src="assets/imgs/deportes.jpg" />
           </ion-card>
         </ion-col>
         <ion-col col-6>
           <ion-card (click)="goDirect('restaurantes')">
-            <img src="assets/imgs/restaurantes.jpg"/>
+            <img src="assets/imgs/restaurantes.jpg" />
           </ion-card>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
-
-  <!--<ion-card *ngFor="let op of _info.info.blog">
-    <ion-card-title class="titulo-blog" padding text-center>{{op.title_plain}}</ion-card-title>
-    <img [src]="op.url_image" />
-    <ion-row no-padding>
-      <ion-col no-padding>
-        <ion-item text-right no-padding>
-          <p>{{getTime(op.date)}}</p>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-card-content>
-      <p [innerHTML]="op.excerpt" text-justify></p>
-    </ion-card-content>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <button ion-button icon-start clear small (click)="goBlog(op)">
-            <ion-icon name="eye"></ion-icon>
-            <div>Leer Completo</div>
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-start clear small>
-            <ion-icon name="share"></ion-icon>
-            <div>Compartir</div>
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-
-  
-  </ion-card>-->
-
-  
-
   <ion-fab right bottom>
-    <button ion-fab color="light" (click)="openSearch()"><ion-icon name="search"></ion-icon></button>
+    <button ion-fab color="light" (click)="openSearch()">
+      <ion-icon name="search"></ion-icon>
+    </button>
   </ion-fab>
 </ion-content>

@@ -1,6 +1,5 @@
 <ion-header>
   <ion-toolbar>
-    
     <ion-title text-center>¿Que estás buscando?</ion-title>
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="closeSearch()">
@@ -8,23 +7,22 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-  
-
-  
-
 </ion-header>
-
 
 <ion-content padding>
   <ion-searchbar
     placeholder=""
     [(ngModel)]="_info.info.search"
-    (keyup.enter) = "goList(_info.info.search)"
+    (keyup.enter)="goList(_info.info.search)"
     (ionCancel)="deleteSearch($event)"
   ></ion-searchbar>
   <ion-list>
-    <button ion-item *ngFor="let item of _info.info.auto" (click)="goList(item)">
+    <button
+      ion-item
+      *ngFor="let item of _info.info.auto"
+      (click)="goList(item)"
+    >
       {{ item }}
-    </button>  
+    </button>
   </ion-list>
 </ion-content>
