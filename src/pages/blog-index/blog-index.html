@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Blog</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let item of getCategories()">
+      <ion-col (click)="goToCategory(item)">
+        <img style="width:100%;" src="/assets/imgs/sa_blog.png" />
+        <div class="overlay">
+          <div class="card-subtitle">272 Artículos</div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,6 +1,5 @@
 // http://ionicframework.com/docs/theming/
 
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +13,42 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+ion-icon {
+  &[class*="custom-"] {
+    mask-size: contain;
+    mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    background: currentColor;
+    color: #4487fc;
+    width: 1em;
+    height: 1em;
+  }
+  &[class*="custom-wine"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-wine.svg);
+  }
+  &[class*="custom-cofee"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-cafe.svg);
+  }
+  &[class*="custom-hospital"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-hospital.svg);
+  }
+  &[class*="custom-car"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-car.svg);
+  }
+  &[class*="custom-restaurant"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-restaurant.svg);
+  }
+  &[class*="custom-phone"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-phone-portrait.svg);
+  }
+  &[class*="custom-website"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-website.svg);
+  }
+  &[class*="custom-email"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-mail.svg);
+  }
+  &[class*="custom-arrow"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-navigate.svg);
+  }
+}

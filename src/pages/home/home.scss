@@ -1,99 +1,43 @@
 page-home {
-
-    .fondo {
-        background: url('../../assets/imgs/bg-se-2.jpg');
-        //background: #fd0;
-        height: 300px;
-        background-size: 100% 300px;
-        background-repeat: no-repeat;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  #search-title {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    ion-card-title {
+      text-align: center;
+      padding-bottom: 0px;
     }
+  }
 
-    .fondo ion-searchbar {
-        border: none;
-        background: transparent;
+  #search-categories {
+    ion-item {
+      padding-left: 0px;
+      border: none;
     }
+  }
 
-    .card-background-page {
+  .ion-md-arrow-forward,
+  .ion-ios-arrow-forward {
+    color: #939393;
+  }
 
-        ion-card {
-            position: relative;
-            text-align: center;
-            
-        }
-
-        .card-title {
-            position: absolute;
-            top: 36%;
-            font-size: 2.0em;
-            width: 100%;
-            font-weight: bold;
-            //color: #fff;
-            color: rgba(0, 0, 0, 0.75);
-        }
-
-        .card-subtitle {
-            font-size: 1.0em;
-            position: absolute;
-            top: 52%;
-            width: 100%;
-            //color: #fff;
-            color: rgba(0, 0, 0, 0.75);
-        }
-
-    }
-
-    .card-background-page2 {
-
-        ion-card {
-            position: relative;
-            text-align: center;
-            
-        }
-
-        .card-title {
-            position: absolute;
-            top: 36%;
-            font-size: 1.1em;
-            width: 100%;
-            font-weight: bold;
-            color: #fff;
-            padding: 5px 0px;
-            background: rgba(0, 0, 0, 0.60);
-        }
-
-        .card-subtitle {
-            font-size: 0.8em;
-            position: absolute;
-            top: 52%;
-            width: 100%;
-            //color: #fff;
-            color: rgba(0, 0, 0, 0.75);
-        }
-
-        .grupo-cards ion-card {
-            width: 33.33%;
-            float: left;
-            padding: 0;
-            margin: 0;
-        }
-
-    }
-
+  #blog-label {
+    border-bottom: 1px solid;
+    border-bottom-color: #cfcccc;
     
-
-    .titulo-blog {
-        font-size: 1.2em;
-        font-weight: 600;
-
-    }
-
-    #mapa_detail {
-        height: 90%;
-    }
-
+    padding-right: 2rem;
     
+    margin-right: 0px;
+    margin-left: 0px;
+    ion-label {
+      color: rgb(110, 109, 109);
+      font-weight: bold;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      display: inline-block;
+    }
+    ion-label:nth-child(2){
+      color: blue;
+      font-weight: normal;
+    }
+  }
 }

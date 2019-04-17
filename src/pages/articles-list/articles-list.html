@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ category.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <article-card
+    *ngFor="let article of articles"
+    [article]="article"
+  ></article-card>
+</ion-content>

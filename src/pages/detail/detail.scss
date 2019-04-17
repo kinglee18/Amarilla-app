@@ -1,34 +1,41 @@
 page-detail {
-    .negocio {
-        width: 100%;
-    }
+  .item-td {
+    white-space: normal;
+  }
 
-    .negocio img {
-        height: 40px;
+  #detail-actions {
+    ion-item {
+      padding-left: 0px;
+      font-size: 1.5rem;
     }
+  }
+  #mapa_detail {
+    width: 100%;
+    height: 300px;
+  }
+  .business-details {
+    padding-top: 15px;
+    padding-bottom: 15px;
 
-    .item-td {
+    b {
+      font-size: 1.5rem;
+    }
+  }
+  #business-adress {
+    padding-left: 0px;
+
+    ion-avatar {
+      display: inline-block;
+      width: 3%;
+    }
+    div {
+      display: inline-block;
+      b {
+        font-size: 1.5rem;
+      }
+      p {
         white-space: normal;
+      }
     }
-
-    /*.item-md.item-block .item-inner {
-        padding-right: 8px;
-        border-bottom: 2px solid #fd0;
-    }*/
-
-    .detail-actions {
-        .item-md.item-block .item-inner {
-            padding-right: 8px;
-            border-bottom:  1px solid #ccc;
-        }
-
-        button {
-            color: #488aff;
-        }
-    }
-
-    #mapa_detail {
-        width: 100%;
-        height: 300px;
-    }
+  }
 }

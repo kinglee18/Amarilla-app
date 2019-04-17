@@ -6,17 +6,20 @@ import {
   Platform
 } from "ionic-angular";
 import { InformacionProvider } from "../../providers/informacion/informacion";
-import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from "@ionic-native/geolocation";
 import { MenuController } from "ionic-angular";
+import { BlogProvider } from "../../providers/blog/blog";
+import { InAppBrowser } from "@ionic-native/in-app-browser";
 
-import * as moment from "moment";
-moment.locale("es");
 
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
 })
 export class HomePage {
+  coords: object = {};
+  articles: Array<object> = [];
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -24,32 +27,60 @@ export class HomePage {
     public _info: InformacionProvider,
     public platform: Platform,
     public geolocation: Geolocation,
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController,
+    private blogProvider: BlogProvider
   ) {}
 
   ionViewDidLoad() {
     this.getUb();
+    this.getArticles();
+    //this.getBusiness();
   }
 
   getUb() {
-     this.geolocation
+    this.geolocation
       .getCurrentPosition()
-      .then((resp) => {
-        this._info.info.coords.lat = resp.coords.latitude;
-        this._info.info.coords.lng = resp.coords.longitude;
-       }).catch((error) => {
-         console.log('Error getting location', error);
-       });
+      .then(resp => {
+        this.coords["lat"] = resp.coords.latitude;
+        this.coords["lng"] = resp.coords.longitude;
+      })
+      .catch(error => {
+        console.error("Error getting location", error);
+      });
   }
 
   openSearch() {
-    this.modalCtrl.create("SearchPage").present();
+    this.modalCtrl.create("SearchPage", { coords: this.coords }).present();
   }
 
   goDirect(texto) {
-    this._info.info.page = 1;
-    this._info.info.texto = texto;
-    this._info.getNegociosSE(texto, this._info.info.page);
-    this.navCtrl.push("ListPage");
+    this.navCtrl.push("ListPage", {
+      searchTerm: texto,
+      coords: this.coords
+    });
+  }
+
+  /*   getBusiness(): void {
+    let businesses: Array<Business>;
+    this._info.getBusiness("cafeteria").subscribe(
+      (data: Array<any>) => {
+        from(data).pipe(map(item => new Business().deserialize(item)));
+      },
+      error => {
+        console.error(error);
+      }
+    );
+  } */
+
+  getArticles() {
+    this.blogProvider.getHomeArticles().then((data: Array<any>) => {
+      for (let x of data) {
+        this.articles.push(x["hits"]["hits"][0]);
+      }
+    });
+  }
+
+  showBlogMenu(): void {
+    this.navCtrl.push("BlogIndexPage");
   }
 }

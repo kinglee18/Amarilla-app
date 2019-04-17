@@ -1,0 +1,23 @@
+<ion-card class="sa-article">
+  <ion-card-header (click)="openBrowser(article._source['url'])">
+    <img [src]="article._source['url_image']" />
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-card-title>{{ article._source["title"] }}</ion-card-title>
+
+    <p [innerHTML]="article._source['excerpt']"></p>
+    <ion-grid>
+      <ion-row id="article-details">
+        <ion-col
+          class="ion-text-start"
+          (click)="goToCategory(article._source['categories'][0]['slug'])"
+          >{{ article._source["categories"][0]["title"] }}</ion-col
+        >
+        <ion-col class="ion-text-end">{{
+          articleDate()
+        }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

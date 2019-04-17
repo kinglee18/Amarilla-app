@@ -8,11 +8,11 @@ import { InformacionProvider } from "../../providers/informacion/informacion";
   templateUrl: "mapa.html"
 })
 export class MapaPage {
-  lat = 43.0741904;
-  lng = -89.3809802;
+  lat
+  lng
   name;
   address;
-
+  coords: object = {};  
   latU;
   lngU;
   dir;
@@ -36,11 +36,14 @@ export class MapaPage {
     public navParams: NavParams,
     public _info: InformacionProvider
   ) {
-    this.lat = this.navParams.get("lat");
-    this.lng = this.navParams.get("lng");
+    console.log(this.navParams);
+    
+    this.lat = parseFloat(this.navParams.get("lat"));
+    this.lng = parseFloat(this.navParams.get("lng"));
     this.name = this.navParams.get("name");
     this.address = this.navParams.get("address");
-
+    this.coords = this.navParams.get("coords");
+    
     this.markerOptions = {
       origin: {
         icon: "./assets/imgs/person0.png",
@@ -53,9 +56,9 @@ export class MapaPage {
       }
     };
 
-    this.latU = this._info.info.coords.lat;
-    this.lngU = this._info.info.coords.lng;
-
+    this.latU = this.coords['lat'];
+    this.lngU = this.coords['lng'];
+    console.log(this)
     this.dir = {
       destination: { lat: this.lat, lng: this.lng },
       origin: { lat: this.latU, lng: this.lngU }
@@ -64,13 +67,13 @@ export class MapaPage {
 
   async caminar() {
     for (let i = 0; i < 20; i++) {
-      this._info.info.coords.lat = this._info.info.coords.lat + 0.001;
-      this._info.info.coords.lng = this._info.info.coords.lng + 0.001;
+      this.coords['lat'] = this.coords['lat'] + 0.001;
+      this.coords['lng'] = this.coords['lng'] + 0.001;
       this.dir = {
         destination: { lat: this.lat, lng: this.lng },
         origin: {
-          lat: this._info.info.coords.lat,
-          lng: this._info.info.coords.lng
+          lat: this.coords['lat'],
+          lng: this.coords['lng']
         }
       };
       await this.sleep(3);

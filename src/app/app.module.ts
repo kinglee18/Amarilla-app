@@ -14,7 +14,12 @@ import { EmailComposer } from '@ionic-native/email-composer';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { HTTP } from '@ionic-native/http';
 import { HttpModule } from '@angular/http';
-
+import { HttpClientModule } from '@angular/common/http';
+import { BlogProvider } from '../providers/blog/blog';
+import { ComponentsModule } from '../components/components.module';
+import { ArticleCardComponent } from '../components/article-card/article-card';
+import { ArticlesListPage } from '../pages/articles-list/articles-list';
+import { ArticlesListPageModule } from '../pages/articles-list/articles-list.module';
 
 
 @NgModule({
@@ -25,7 +30,9 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    HttpClientModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +48,8 @@ import { HttpModule } from '@angular/http';
     CallNumber,
     EmailComposer,
     InAppBrowser,
-    HTTP
+    HTTP,
+    BlogProvider
   ]
 })
 export class AppModule {}

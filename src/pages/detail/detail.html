@@ -1,79 +1,63 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ negocio.name }}</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item>
-    <ion-thumbnail item-start *ngIf="negocio.logo">
-      <div class="negocio" padding-vertical>
-        <img [src]="negocio.logo" alt="logo" />
+<ion-content>
+  <ion-card padding>
+    <ion-item id="business-adress">
+      <ion-avatar slot="start">
+        <ion-img
+          src="{{negocio.logo}}"
+        ></ion-img>
+      </ion-avatar>
+      <div>
+          <b>{{ negocio.bussinessName }}</b>
+          <p>{{ negocio.address }}</p> 
       </div>
-    </ion-thumbnail>
-    <ion-thumbnail item-start *ngIf="!negocio.logo">
-      <img src="https://s3.amazonaws.com/seccion/card.png" alt="logo" />
-    </ion-thumbnail>
-    <h2>{{ negocio.name }}</h2>
-    <p class="item-td">{{ negocio.address }}</p>
-  </ion-item>
-  <ion-list class="detail-actions">
-    <button
-      ion-item
-      icon-start
-      (click)="actionCall(negocio.phone)"
-      *ngIf="negocio.phone"
-    >
-      <ion-icon name="call"></ion-icon>
-      Llamar
-    </button>
-    <button
-      ion-item
-      icon-start
-      (click)="actionEmail(negocio.email)"
-      *ngIf="negocio.email"
-    >
-      <ion-icon name="send"></ion-icon>
-      Enviar E-Mail
-    </button>
-    <button
-      ion-item
-      icon-start
-      (click)="
-        actionMap(negocio.lat, negocio.lng, negocio.name, negocio.address)
-      "
-      *ngIf="negocio.lat && negocio.lng"
-    >
-      <ion-icon name="map"></ion-icon>
-      ¿Como Llegar?
-    </button>
-    <button
-      ion-item
-      icon-start
-      (click)="actionSitio(negocio.sitio)"
-      *ngIf="negocio.sitio"
-    >
-      <ion-icon name="share-alt"></ion-icon>
-      Sitio Web
-    </button>
-  </ion-list>
+    </ion-item>
+    <div id="detail-actions">
+      <ion-item
+        (click)="
+          actionMap(negocio.lat, negocio.lon, negocio.bn, negocio.address)
+        "
+        *ngIf="coords"
+      >
+        <ion-icon name="custom-arrow"></ion-icon>
+        ¿Cómo Llegar?
+      </ion-item>
+      <ion-item (click)="actionEmail(negocio.lke)" *ngIf="negocio.lke">
+        <ion-icon name="custom-email"></ion-icon>
+        Envíar email
+      </ion-item>
+      <ion-item (click)="actionSitio(negocio.url)" *ngIf="negocio.url">
+        <ion-icon name="custom-website"></ion-icon>
+        Sitio Web
+      </ion-item>
+      <ion-item
+        (click)="actionCall(negocio.phones[0].number)"
+        *ngIf="negocio.phones"
+      >
+        <ion-icon name="custom-phone"></ion-icon>
+        {{ negocio.phones[0].number }}
+      </ion-item>
+    </div>
 
-  <ion-row>
-    <ion-item *ngIf="negocio.hrs">
-      <h2>Horarios</h2>
-      <p class="item-td">{{ negocio.hrs }}</p>
-    </ion-item>
-    <ion-item *ngIf="negocio.phones.length > 0">
-      <h2>Telefono</h2>
-      <p *ngFor="let op of negocio.phones" class="item-td">{{ op }}</p>
-    </ion-item>
-    <ion-item *ngIf="negocio.pys">
-      <h2>Productos y Servicios</h2>
-      <p class="item-td">{{ negocio.pys }}</p>
-    </ion-item>
-    <ion-item *ngIf="negocio.payment">
-      <h2>Formas de Pago</h2>
-      <p class="item-td">{{ negocio.payment }}</p>
-    </ion-item>
-  </ion-row>
+    <div class="business-details" *ngIf="negocio.txtschedule">
+      <b>Horarios</b>
+      <p class="item-td" *ngFor="let schedule of negocio.txtschedule">
+        {{ schedule.text }}
+      </p>
+    </div>
+    <div class="business-details ion-text-justify" *ngIf="negocio.services">
+      <b>Productos y Servicios</b>
+      <p class="item-td ion-text-justify">
+        {{ negocio.services }}
+      </p>
+    </div>
+    <div class="business-details" *ngIf="negocio.paymentTypeList">
+      <b>Formas de Pago</b>
+      <p class="item-td ion-text-justify">{{ negocio.paymentTypeList }}</p>
+    </div>
+  </ion-card>
 </ion-content>

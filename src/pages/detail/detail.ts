@@ -11,9 +11,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
 })
 export class DetailPage {
   negocio;
-
-  lat = 43.0741904;
-  lng = -89.3809802;
+  coords: object = {};
 
   urlIcon = {
     url: "./assets/imgs/ico_seccion.png",
@@ -31,13 +29,14 @@ export class DetailPage {
     private iab: InAppBrowser
   ) {
     this.negocio = this.navParams.get("negocio");
+    this.coords = this.navParams.get("coords");
   }
 
   actionCall(tel) {
     this.callNumber
       .callNumber(tel, true)
-      .then(res => console.log("Launched dialer!", res))
-      .catch(err => console.log("Error launching dialer", err));
+      .then(res => console.info("Launched dialer!", res))
+      .catch(err => console.error("Error launching dialer", err));
   }
 
   actionEmail(correo) {
@@ -66,7 +65,8 @@ export class DetailPage {
       lat,
       lng,
       name,
-      address
+      address,
+      coords: this.coords
     });
   }
 }

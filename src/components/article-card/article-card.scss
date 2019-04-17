@@ -1,0 +1,17 @@
+article-card {
+  ion-grid {
+    padding-left: 0px !important;
+  }
+
+  #article-details {
+    ion-col {
+      color: #6289c2;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+
+  img {
+    width: 50%;
+  }
+}

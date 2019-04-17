@@ -12,58 +12,60 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-menu [content]="mycontent">
-    <ion-content>
-      <ion-list> </ion-list>
-    </ion-content>
-  </ion-menu>
+<ion-content>
+  <ion-searchbar
+    showCancelButton
+    cancelButtonText="x"
+    placeholder="¿Qué estás buscando?"
+    [(ngModel)]="searchText"
+    (keyup.enter)="goDirect(searchText)"
+  ></ion-searchbar>
+  <ion-card>
+    <ion-item-divider>
+      <ion-card-header id="search-title">
+        <ion-card-title 
+          >Explora cerca de mi</ion-card-title
+        >
+      </ion-card-header></ion-item-divider
+    >
 
-  <div class="card-background-page">
-    <ion-card (click)="openSearch()">
-      <img src="assets/imgs/principal.jpg" />
-    </ion-card>
+    <ion-card-content id="search-categories">
+      <ion-list>
+        <ion-item (click)="goDirect('bares')">
+          <ion-icon name="custom-wine"></ion-icon>
+          <span>Bares</span>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-item>
+        <ion-item (click)="goDirect('cafeterias')">
+          <ion-icon name="custom-cofee"></ion-icon>
+          <span>Cafeterias</span>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-item>
+        <ion-item (click)="goDirect('hospitales')">
+          <ion-icon name="custom-hospital"></ion-icon>
+          <span>Hospitales</span>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-item>
+        <ion-item (click)="goDirect('taxis')">
+          <ion-icon name="custom-car"></ion-icon>
+          <span>Taxis</span>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-item>
+        <ion-item (click)="goDirect('restaurantes')">
+          <ion-icon name="custom-restaurant"></ion-icon>
+          <span>Restaurantes</span>
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <div id="blog-label">
+      <ion-label>LO NUEVO DEL BLOG</ion-label>
+      <ion-label (click)="showBlogMenu()">Ver blog</ion-label>
   </div>
-
-  <div class="card-background-page2">
-    <ion-grid no-padding>
-      <ion-row>
-        <ion-col col-6>
-          <ion-card (click)="goDirect('bares')">
-            <img src="assets/imgs/bares.jpg" />
-          </ion-card>
-        </ion-col>
-        <ion-col col-6>
-          <ion-card (click)="goDirect('cafeterias')">
-            <img src="assets/imgs/cafeterias.jpg" />
-          </ion-card>
-        </ion-col>
-        <ion-col col-6>
-          <ion-card (click)="goDirect('comida mexicana')">
-            <img src="assets/imgs/comida_mexicana.jpg" />
-          </ion-card>
-        </ion-col>
-        <ion-col col-6>
-          <ion-card (click)="goDirect('comida saludable')">
-            <img src="assets/imgs/comida_saludable.jpg" />
-          </ion-card>
-        </ion-col>
-        <ion-col col-6>
-          <ion-card (click)="goDirect('deportes')">
-            <img src="assets/imgs/deportes.jpg" />
-          </ion-card>
-        </ion-col>
-        <ion-col col-6>
-          <ion-card (click)="goDirect('restaurantes')">
-            <img src="assets/imgs/restaurantes.jpg" />
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
-  <ion-fab right bottom>
-    <button ion-fab color="light" (click)="openSearch()">
-      <ion-icon name="search"></ion-icon>
-    </button>
-  </ion-fab>
+  <article-card
+    *ngFor="let article of articles"
+    [article]="article"
+    [categoryLink]="true"
+  ></article-card>
 </ion-content>
