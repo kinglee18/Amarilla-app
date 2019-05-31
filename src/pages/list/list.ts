@@ -29,7 +29,8 @@ export class ListPage {
       .getBusiness(this.searchTerm, this.coords["lng"], this.coords["lat"])
       .subscribe(
         data => {
-          if (data['totalResultsNum'] > 0) {
+          if (data["totalResultsNum"] > 0) {
+            this.total = data["totalPages"];
             for (let business of data["ListRes"]) {
               this.businesses.push(new Business().deserialize(business));
             }
@@ -52,7 +53,7 @@ export class ListPage {
   goAddList(ev) {
     this.page++;
     if (this.page <= this.total) {
-      if (this.coords["lat"] && this.coords["lng"]) {
+      setTimeout(() => {
         this._info
           .getBusiness(
             this.searchTerm,
@@ -61,19 +62,17 @@ export class ListPage {
             this.page
           )
           .subscribe(data => {
-            console.log(data);
-            
-            for (let business of data["ListRes"][0]["ListRes"]) {
+            for (let business of data["ListRes"]) {
               this.businesses.push(new Business().deserialize(business));
             }
           });
-      }
-    } else {
-      ev.complete();
+        ev.complete();
+      }, 2000);
     }
   }
 
   getDist(lat, lng): string | boolean {
+    if (!lat && !lng) return false;
     let dist = geolib.getDistance(
       {
         latitude: this.coords["lat"],

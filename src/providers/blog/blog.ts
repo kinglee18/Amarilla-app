@@ -42,9 +42,10 @@ export class BlogProvider {
     });
   }
 
-  getByCategory(category, size = 1): Promise<any> {
+  getByCategory(category, size = 1, page = 0): Promise<any> {
     let item = this.searchCategoryBySlugName(category);
-    return this.client.search({
+    let body = {
+      from: page,
       index: "blog_rep",
       body: {
         size,
@@ -57,7 +58,7 @@ export class BlogProvider {
                 must: [
                   {
                     match: {
-                      "categories.title": item['elasticsName']
+                      "categories.title": item["elasticsName"]
                     }
                   }
                 ]
@@ -66,7 +67,8 @@ export class BlogProvider {
           }
         }
       }
-    });
+    };
+    return this.client.search(body);
   }
 
   getHomeArticles() {

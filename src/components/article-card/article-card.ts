@@ -8,10 +8,12 @@ import * as moment from "moment";
   templateUrl: "article-card.html"
 })
 export class ArticleCardComponent {
-  @Input() article: object;
+  @Input() article: object = {};
   @Input() categoryLink: boolean = false;
 
-  constructor(public navCtrl: NavController, private iab: InAppBrowser) {}
+  constructor(public navCtrl: NavController, private iab: InAppBrowser) {
+    
+  }
 
   openBrowser(sitio: string) {
     const browser = this.iab.create(sitio);
