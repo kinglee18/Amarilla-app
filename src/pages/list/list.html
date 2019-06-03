@@ -11,15 +11,13 @@
     <ion-list>
       <ion-item *ngFor="let op of businesses" (click)="openDetail(op)">
         <ion-avatar slot="start">
-          <img
-            src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y"
-          />
+          <img src="{{ op.logo }}"/>
         </ion-avatar>
-        <ion-label slot="end">
+        <div>
           <h2>{{ op.bussinessName }}</h2>
           <h3>{{ op.address }}</h3>
           <p *ngIf="getDist(op.lat, op.lon)">{{ getDist(op.lat, op.lon) }}</p>
-        </ion-label>
+        </div>
       </ion-item>
     </ion-list>
 

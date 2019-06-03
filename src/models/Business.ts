@@ -41,7 +41,8 @@ export default class Business {
     return address;
   }
 
-  get services(): string {
+  get services(): string | boolean {
+    if(!this.productservices) return false;
     let s = this.productservices
       .map(item => {
         return item["service"];
