@@ -1,44 +1,53 @@
 page-home {
-    #search-title {
+  #search-title {
+    padding-bottom: 0px;
+    padding-top: 0px;
+    ion-card-title {
+      text-align: center;
       padding-bottom: 0px;
-      padding-top: 0px;
-      ion-card-title {
-        text-align: center;
-        padding-bottom: 0px;
-      }
     }
-  
-    #search-categories {
-      ion-item {
-        padding-left: 0px;
-        border: none;
+  }
+
+  #search-categories {
+    ion-item {
+      padding-left: 0px;
+      border: none;
+
+      span{
+        margin-left: 8px;
       }
-    }
-  
-    .ion-md-arrow-forward,
-    .ion-ios-arrow-forward {
-      color: #939393;
-    }
-  
-    #blog-label {
-      border-bottom: 1px solid;
-      border-bottom-color: #cfcccc;
-      
-      padding-right: 2rem;
-      
-      margin-right: 0px;
-      margin-left: 0px;
-      ion-label {
-        color: rgb(110, 109, 109);
-        font-weight: bold;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        display: inline-block;
-      }
-      ion-label:nth-child(2){
-        color: blue;
-        font-weight: normal;
+      .arrow {
+        font-size: 1.9rem;
+        position: absolute;
+        right: 0px;
+        padding-top: 6px;
       }
     }
   }
-  
+
+  .ion-md-arrow-forward,
+  .ion-ios-arrow-forward {
+    color: #939393;
+  }
+
+  #blog-label {
+    border-bottom: 1px solid;
+    border-bottom-color: #cfcccc;
+
+    padding-right: 2rem;
+
+    margin-right: 0px;
+    margin-left: 0px;
+    ion-label {
+      color: rgb(110, 109, 109);
+      font-weight: bold;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      display: inline-block;
+    }
+    ion-label:nth-child(2) {
+      color: blue;
+      font-weight: normal;
+    }
+  }
+}
