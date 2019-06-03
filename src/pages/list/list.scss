@@ -1,5 +1,28 @@
 page-list {
+  ion-item {
+    ion-avatar,
+    div {
+      display: inline-block;
+    }
+    ion-avatar {
+      width: 10%;
+    }
+    div {
+      width: 90%;
+      h3 {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 95%;
+      }
+    }
+  }
 
+  .item-block:first-child {
+    border: 0px;
+  }
 
-
+  #founded-label {
+    padding-left: 15px;
+  }
 }

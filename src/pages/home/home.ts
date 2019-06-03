@@ -11,7 +11,6 @@ import { MenuController } from "ionic-angular";
 import { BlogProvider } from "../../providers/blog/blog";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 
-
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
@@ -19,6 +18,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
 export class HomePage {
   coords: object = {};
   articles: Array<object> = [];
+  loading: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -73,11 +73,14 @@ export class HomePage {
   } */
 
   getArticles() {
-    this.blogProvider.getHomeArticles().then((data: Array<any>) => {
-      for (let x of data) {
-        this.articles.push(x["hits"]["hits"][0]);
-      }
-    });
+    this.blogProvider
+      .getHomeArticles()
+      .then((data: Array<any>) => {
+        for (let x of data) {
+          this.loading = false;
+          this.articles.push(x["hits"]["hits"][0]);
+        }
+      })
   }
 
   showBlogMenu(): void {

@@ -59,13 +59,17 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <div id="blog-label">
-      <ion-label>LO NUEVO DEL BLOG</ion-label>
-      <ion-label (click)="showBlogMenu()">Ver blog</ion-label>
+  <ion-spinner name="circles" *ngIf="loading"></ion-spinner>
+  <div *ngIf="!loading">
+      <div id="blog-label" >
+          <ion-label>LO NUEVO DEL BLOG</ion-label>
+          <ion-label (click)="showBlogMenu()">Ver blog</ion-label>
+      </div>
+      <article-card
+        *ngFor="let article of articles"
+        [article]="article"
+        [categoryLink]="true"
+      ></article-card>
   </div>
-  <article-card
-    *ngFor="let article of articles"
-    [article]="article"
-    [categoryLink]="true"
-  ></article-card>
+
 </ion-content>

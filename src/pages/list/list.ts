@@ -72,7 +72,7 @@ export class ListPage {
   }
 
   getDist(lat, lng): string | boolean {
-    if (!lat && !lng) return false;
+    if (!lat && !lng && !this.coords["lat"]) return false;
     let dist = geolib.getDistance(
       {
         latitude: this.coords["lat"],

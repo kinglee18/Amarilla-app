@@ -5,6 +5,7 @@ page-home {
     ion-card-title {
       text-align: center;
       padding-bottom: 0px;
+      font-size: 1.9rem;
     }
   }
 
@@ -13,7 +14,7 @@ page-home {
       padding-left: 0px;
       border: none;
 
-      span{
+      span {
         margin-left: 8px;
       }
       .arrow {
@@ -49,5 +50,9 @@ page-home {
       color: blue;
       font-weight: normal;
     }
+  }
+
+  ion-spinner {
+    margin: 20px 45% 10px 45%;
   }
 }
