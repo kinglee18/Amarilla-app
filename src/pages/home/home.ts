@@ -19,6 +19,7 @@ export class HomePage {
   coords: object = {};
   articles: Array<object> = [];
   loading: boolean = true;
+  counter = {};
 
   constructor(
     public navCtrl: NavController,
@@ -73,17 +74,17 @@ export class HomePage {
   } */
 
   getArticles() {
-    this.blogProvider
-      .getHomeArticles()
-      .then((data: Array<any>) => {
-        for (let x of data) {
-          this.loading = false;
-          this.articles.push(x["hits"]["hits"][0]);
-        }
-      })
+    this.blogProvider.getHomeArticles().then((data: Array<any>) => {
+      for (let x of data) {
+        this.loading = false;
+        this.articles.push(x["hits"]["hits"][0]);
+        this.counter[x["hits"]["hits"][0]._source.categories[0].slug] =
+          x["hits"]["total"];
+      }
+    });
   }
 
   showBlogMenu(): void {
-    this.navCtrl.push("BlogIndexPage");
+    this.navCtrl.push("BlogIndexPage", this.counter);
   }
 }

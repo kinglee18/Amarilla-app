@@ -8,9 +8,10 @@
   <ion-grid>
     <ion-row *ngFor="let item of getCategories()">
       <ion-col (click)="goToCategory(item)">
-        <img style="width:100%;" src="/assets/imgs/sa_blog.png" />
+        <img style="width:100%;" src="/assets/imgs/{{item.image}}.jpg" />
         <div class="overlay">
-          <div class="card-subtitle">272 Artículos</div>
+          <h1>{{ item.title }}</h1>
+          <div class="card-subtitle">{{item.count}} artículos</div>
         </div>
       </ion-col>
     </ion-row>

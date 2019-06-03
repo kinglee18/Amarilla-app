@@ -9,25 +9,28 @@ export class BlogProvider {
       slug: "emprendedores",
       elasticsName: "emprendedores",
       title: "Tu negocio",
-      img: ""
+      imgPrefixName: "emprendedores"
     },
     {
       slug: "como-cuidarse",
       elasticsName: "¿como cuidarse?",
       title: "¿Cómo cuidarse?",
-      img: ""
+      imgPrefixName: "emprendedores"
+      /* imgPrefixName: "cuidarse" */
     },
     {
       slug: "que-comer",
       elasticsName: "¿que comer?",
       title: "¿Qué comer?",
-      img: ""
+      imgPrefixName: "emprendedores"
+      /* imgPrefixName: "comer" */
     },
     {
       slug: "quehacer",
       elasticsName: "¿que hacer?",
       title: "¿Qué hacer?",
-      img: ""
+      imgPrefixName: "emprendedores"
+      /* imgPrefixName: "hacer" */
     }
   ];
   constructor() {

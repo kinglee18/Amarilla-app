@@ -24,31 +24,59 @@ ion-icon {
     width: 1em;
     height: 1em;
   }
-  &[class*="custom-wine"] {
+  &[class*="ion-ios-custom-wine"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-wine.svg);
   }
-  &[class*="custom-cofee"] {
+  &[class*="ion-ios-custom-cofee"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-cafe.svg);
   }
-  &[class*="custom-hospital"] {
+  &[class*="ion-ios-custom-hospital"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-hospital.svg);
   }
-  &[class*="custom-car"] {
+  &[class*="ion-ios-custom-car"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-car.svg);
   }
-  &[class*="custom-restaurant"] {
+  &[class*="ion-ios-custom-restaurant"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-restaurant.svg);
   }
-  &[class*="custom-phone"] {
+  &[class*="ion-ios-custom-phone"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-phone-portrait.svg);
   }
-  &[class*="custom-website"] {
+  &[class*="ion-ios-custom-website"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-website.svg);
   }
-  &[class*="custom-email"] {
+  &[class*="ion-ios-custom-email"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-mail.svg);
   }
-  &[class*="custom-arrow"] {
+  &[class*="ion-ios-custom-arrow"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-navigate.svg);
+  }
+
+  &[class*="ion-md-custom-wine"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-wine.svg);
+  }
+  &[class*="ion-md-custom-cofee"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-cafe.svg);
+  }
+  &[class*="ion-md-custom-hospital"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-hospital.svg);
+  }
+  &[class*="ion-md-custom-car"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-car.svg);
+  }
+  &[class*="ion-md-custom-restaurant"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-restaurant.svg);
+  }
+  &[class*="ion-md-custom-phone"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-phone-portrait.svg);
+  }
+  &[class*="ion-md-custom-website"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-website.svg);
+  }
+  &[class*="ion-md-custom-email"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-mail.svg);
+  }
+  &[class*="ion-md-custom-arrow"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-navigate.svg);
   }
 }
