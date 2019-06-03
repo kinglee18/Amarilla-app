@@ -10,7 +10,7 @@ import { BlogProvider } from "../../providers/blog/blog";
 export class ArticlesListPage {
   articles: Array<object>;
   category: object = {};
-  page: number = 0;
+  from: number = 0;
   total: number;
   errorMessage: string = "";
   pageSize = 5;
@@ -29,19 +29,19 @@ export class ArticlesListPage {
 
   getArticles() {
     this.blogProvider
-      .getByCategory(this.category["slug"], this.pageSize, this.page)
+      .getByCategory(this.category["slug"], this.pageSize)
       .then(data => {
         this.articles = data["hits"]["hits"];
-        this.total = Math.round(data["hits"]["total"] / this.pageSize);
+        this.total = data["hits"]["total"];
       });
   }
 
   paginate(ev) {
-    this.page++;
-    if (this.page <= this.total) {
+    this.from += this.pageSize;
+    if (this.from <= this.total) {
       setTimeout(() => {
         this.blogProvider
-          .getByCategory(this.category["slug"], this.pageSize, this.page)
+          .getByCategory(this.category["slug"], this.pageSize, this.from)
           .then(data => {
             data["hits"]["hits"].forEach(element => {
               this.articles.push(element);

@@ -42,10 +42,10 @@ export class BlogProvider {
     });
   }
 
-  getByCategory(category, size = 1, page = 0): Promise<any> {
+  getByCategory(category, size = 1, from = 0): Promise<any> {
     let item = this.searchCategoryBySlugName(category);
     let body = {
-      from: page,
+      from,
       index: "blog_rep",
       body: {
         size,
