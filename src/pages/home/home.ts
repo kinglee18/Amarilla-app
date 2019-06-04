@@ -35,7 +35,6 @@ export class HomePage {
   ionViewDidLoad() {
     this.getUb();
     this.getArticles();
-    //this.getBusiness();
   }
 
   getUb() {
@@ -46,12 +45,9 @@ export class HomePage {
         this.coords["lng"] = resp.coords.longitude;
       })
       .catch(error => {
-        console.error("Error getting location", error);
+        this.coords['lat'] = 19.4326018;
+        this.coords['lng'] = -99.1353936;
       });
-  }
-
-  openSearch() {
-    this.modalCtrl.create("SearchPage", { coords: this.coords }).present();
   }
 
   goDirect(texto) {
@@ -60,18 +56,6 @@ export class HomePage {
       coords: this.coords
     });
   }
-
-  /*   getBusiness(): void {
-    let businesses: Array<Business>;
-    this._info.getBusiness("cafeteria").subscribe(
-      (data: Array<any>) => {
-        from(data).pipe(map(item => new Business().deserialize(item)));
-      },
-      error => {
-        console.error(error);
-      }
-    );
-  } */
 
   getArticles() {
     this.blogProvider.getHomeArticles().then((data: Array<any>) => {
