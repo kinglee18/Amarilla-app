@@ -20,12 +20,13 @@ import { ComponentsModule } from '../components/components.module';
 import { ArticleCardComponent } from '../components/article-card/article-card';
 import { ArticlesListPage } from '../pages/articles-list/articles-list';
 import { ArticlesListPageModule } from '../pages/articles-list/articles-list.module';
+import { TabsPage } from '../pages/tabs/tabs';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,7 @@ import { ArticlesListPageModule } from '../pages/articles-list/articles-list.mod
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    TabsPage
   ],
   providers: [
     StatusBar,

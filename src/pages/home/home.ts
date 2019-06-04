@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
-import { NavController } from "ionic-angular";
+import { NavController, IonicPage } from "ionic-angular";
 import { InformacionProvider } from "../../providers/informacion/informacion";
 import { Geolocation } from "@ionic-native/geolocation";
 import { BlogProvider } from "../../providers/blog/blog";
 
+@IonicPage()
 @Component({
   selector: "page-home",
   templateUrl: "home.html"
@@ -23,7 +24,7 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.getUb();
-    this.getArticles();
+   // this.getArticles();
   }
 
   getUb() {

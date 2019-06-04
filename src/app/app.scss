@@ -51,6 +51,12 @@ ion-icon {
   &[class*="ion-ios-custom-arrow"] {
     mask-image: url(../../assets/icon/_ionicons_svg_ios-navigate.svg);
   }
+  &[class*="ion-ios-custom-blog"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-blog.svg);
+  }
+  &[class*="ion-ios-custom-home"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_ios-home.svg);
+  }
 
   &[class*="ion-md-custom-wine"] {
     mask-image: url(../../assets/icon/_ionicons_svg_md-wine.svg);
@@ -78,5 +84,11 @@ ion-icon {
   }
   &[class*="ion-md-custom-arrow"] {
     mask-image: url(../../assets/icon/_ionicons_svg_md-navigate.svg);
+  }
+  &[class*="ion-ios-custom-blog"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-blog.svg);
+  }
+  &[class*="ion-ios-custom-home"] {
+    mask-image: url(../../assets/icon/_ionicons_svg_md-home.svg);
   }
 }
