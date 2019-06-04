@@ -16,6 +16,7 @@ export class ListPage {
   page = 1;
   total: number;
   searchTerm: string;
+  loading = true;
   errorMessage: string = "";
 
   constructor(
@@ -42,6 +43,9 @@ export class ListPage {
         error => {
           this.errorMessage =
             "Parece que algo no está funcionando bien, intenta mas tarde";
+        },
+        () => {
+          this.loading = false;
         }
       );
   }

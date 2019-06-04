@@ -7,24 +7,28 @@
 </ion-header>
 
 <ion-content>
-  <ion-label id="founded-label" *ngIf="!errorMessage.length" >Encontramos para tí</ion-label>
-  <ion-list>
-    <ion-item *ngFor="let op of businesses" (click)="openDetail(op)">
-      <ion-avatar slot="start">
-        <img src="{{ op.logo }}" />
-      </ion-avatar>
-      <div>
-        <h2>{{ op.bussinessName }}</h2>
-        <h3>{{ op.address }}</h3>
-        <p class="item-text-wrap" *ngIf="getDist(op.lat, op.lon)">
-          {{ getDist(op.lat, op.lon) }}
-        </p>
-      </div>
-    </ion-item>
-  </ion-list>
-  <ion-infinite-scroll (ionInfinite)="goAddList($event)">
-    <ion-infinite-scroll-content></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  <div *ngIf="!errorMessage.length">
+    <ion-label id="founded-label">Encontramos para tí</ion-label>
+    <ion-spinner name="circles" *ngIf="loading"></ion-spinner>
+
+    <ion-list>
+      <ion-item *ngFor="let op of businesses" (click)="openDetail(op)">
+        <ion-avatar slot="start">
+          <img src="{{ op.logo }}" />
+        </ion-avatar>
+        <div>
+          <h2>{{ op.bussinessName }}</h2>
+          <h3>{{ op.address }}</h3>
+          <p class="item-text-wrap" *ngIf="getDist(op.lat, op.lon)">
+            {{ getDist(op.lat, op.lon) }}
+          </p>
+        </div>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="goAddList($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
 
   <div *ngIf="errorMessage.length">
     <h2 text-center>{{ errorMessage }}</h2>

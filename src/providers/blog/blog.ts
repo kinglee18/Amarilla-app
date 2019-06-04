@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Client } from "elasticsearch-browser";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class BlogProvider {
-  private client: Client;
   public categories = [
     {
       slug: "emprendedores",
@@ -33,16 +32,9 @@ export class BlogProvider {
       /* imgPrefixName: "hacer" */
     }
   ];
-  constructor() {
-    if (!this.client) {
-      this._connect();
-    }
-  }
 
-  private _connect() {
-    this.client = new Client({
-      host: "10.34.180.126:9200"
-    });
+  constructor(private http: HttpClient) {
+
   }
 
   getByCategory(category, size = 1, from = 0): Promise<any> {
@@ -71,7 +63,7 @@ export class BlogProvider {
         }
       }
     };
-    return this.client.search(body);
+    return this.http.post("https://engine.aceleradordigitaldenegocios.com.mx/blog", body).toPromise();
   }
 
   getHomeArticles() {

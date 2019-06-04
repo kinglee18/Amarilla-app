@@ -1,13 +1,7 @@
 import { Component } from "@angular/core";
-import {
-  NavController,
-  NavParams,
-  ModalController,
-  Platform
-} from "ionic-angular";
+import { NavController } from "ionic-angular";
 import { InformacionProvider } from "../../providers/informacion/informacion";
 import { Geolocation } from "@ionic-native/geolocation";
-import { MenuController } from "ionic-angular";
 import { BlogProvider } from "../../providers/blog/blog";
 
 @Component({
@@ -22,12 +16,8 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams,
-    public modalCtrl: ModalController,
     public _info: InformacionProvider,
-    public platform: Platform,
     public geolocation: Geolocation,
-    public menuCtrl: MenuController,
     private blogProvider: BlogProvider
   ) {}
 
