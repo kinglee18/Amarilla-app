@@ -9,7 +9,6 @@ import { InformacionProvider } from "../../providers/informacion/informacion";
 import { Geolocation } from "@ionic-native/geolocation";
 import { MenuController } from "ionic-angular";
 import { BlogProvider } from "../../providers/blog/blog";
-import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 @Component({
   selector: "page-home",
