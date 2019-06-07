@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{
+    <ion-title text-center>{{
       searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1)
     }}</ion-title>
   </ion-navbar>
@@ -8,24 +8,24 @@
 
 <ion-content>
   <div *ngIf="!errorMessage.length">
-    <ion-label id="founded-label">Encontramos para tí</ion-label>
+    <ion-label id="founded-label">ENCONTRAMOS PARA TI</ion-label>
     <ion-spinner name="circles" *ngIf="loading"></ion-spinner>
 
     <ion-list>
       <ion-item *ngFor="let op of businesses" (click)="openDetail(op)">
-        <ion-avatar slot="start">
+        <ion-avatar slot="start" margin-start>
           <img src="{{ op.logo }}" />
         </ion-avatar>
         <div>
           <h2>{{ op.bussinessName }}</h2>
           <h3>{{ op.address }}</h3>
-          <p class="item-text-wrap" *ngIf="getDist(op.lat, op.lon)">
-            {{ getDist(op.lat, op.lon) }}
+          <p class="item-text-wrap" *ngIf="getDist(op)">
+            {{ getDist(op) }}
           </p>
         </div>
       </ion-item>
     </ion-list>
-    <ion-infinite-scroll (ionInfinite)="goAddList($event)">
+    <ion-infinite-scroll (ionInfinite)="goAddList($event)" *ngIf="page < this.total">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>

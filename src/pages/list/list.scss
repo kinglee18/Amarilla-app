@@ -1,14 +1,16 @@
 page-list {
   ion-item {
+    padding-left: 0px!important;
     ion-avatar,
     div {
       display: inline-block;
     }
+
     ion-avatar {
       width: 10%;
     }
     div {
-      width: 90%;
+      width: 85%;
       h3 {
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -19,7 +21,7 @@ page-list {
   }
 
   .item-block:first-child {
-    border: 0px;
+    border-top: 1px solid #dedede;
   }
 
   #founded-label {

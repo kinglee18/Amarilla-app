@@ -14,6 +14,8 @@ export class ArticlesListPage {
   total: number;
   errorMessage: string = "";
   pageSize = 5;
+  loader = true;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -31,8 +33,14 @@ export class ArticlesListPage {
     this.blogProvider
       .getByCategory(this.category["slug"], this.pageSize)
       .then(data => {
+        this.loader = false;
         this.articles = data["hits"]["hits"];
         this.total = data["hits"]["total"];
+      })
+      .catch(e => {
+        this.loader = false;
+        this.errorMessage = "Parece que hay un problema, intenta más tarde";
+        console.error(e);
       });
   }
 

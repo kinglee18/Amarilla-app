@@ -1,27 +1,47 @@
 <ion-header>
-  <ion-navbar>
-  </ion-navbar>
+  <ion-navbar> </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-card padding>
     <ion-item id="business-adress">
       <ion-avatar slot="start">
-        <ion-img
-          src="{{negocio.logo}}"
-        ></ion-img>
+        <ion-img src="{{ negocio.logo }}"></ion-img>
       </ion-avatar>
       <div>
-          <b>{{ negocio.bussinessName }}</b>
-          <p>{{ negocio.address }}</p> 
+        <b>{{ negocio.bussinessName }}</b>
+        <p>{{ negocio.address }}</p>
       </div>
     </ion-item>
+
     <div id="detail-actions">
+      <agm-map
+        [latitude]="negocio.location.lat"
+        [longitude]="negocio.location.lon"
+        [zoom]="15"
+        [zoomControl]="false"
+        [mapDraggable]="false"
+        [streetViewControl]="false"
+        [clickableIcons]="false"
+        *ngIf="negocio.location"
+      >
+        <agm-marker
+          [latitude]="negocio.location.lat"
+          [longitude]="negocio.location.lon"
+          [label]="negocio.bussinessName.charAt(0)"
+        >
+        </agm-marker>
+      </agm-map>
       <ion-item
         (click)="
-          actionMap(negocio.lat, negocio.lon, negocio.bn, negocio.address)
+          actionMap(
+            negocio.location.lat,
+            negocio.location.lon,
+            negocio.bussinessName,
+            negocio.address
+          )
         "
-        *ngIf="coords"
+        *ngIf="negocio.location"
       >
         <ion-icon name="custom-arrow"></ion-icon>
         ¿Cómo Llegar?
@@ -42,7 +62,6 @@
         {{ negocio.phones[0].number }}
       </ion-item>
     </div>
-
     <div class="business-details" *ngIf="negocio.txtschedule">
       <b>Horarios</b>
       <p class="item-td" *ngFor="let schedule of negocio.txtschedule">

@@ -24,7 +24,7 @@ export class HomePage {
 
   ionViewDidLoad() {
     this.getUb();
-   // this.getArticles();
+    this.getArticles();
   }
 
   getUb() {
@@ -35,8 +35,8 @@ export class HomePage {
         this.coords["lng"] = resp.coords.longitude;
       })
       .catch(error => {
-        this.coords['lat'] = 19.4326018;
-        this.coords['lng'] = -99.1353936;
+        this.coords["lat"] = 19.4326018;
+        this.coords["lng"] = -99.1353936;
       });
   }
 
@@ -48,14 +48,17 @@ export class HomePage {
   }
 
   getArticles() {
-    this.blogProvider.getHomeArticles().then((data: Array<any>) => {
-      for (let x of data) {
-        this.loading = false;
-        this.articles.push(x["hits"]["hits"][0]);
-        this.counter[x["hits"]["hits"][0]._source.categories[0].slug] =
-          x["hits"]["total"];
-      }
-    });
+    this.blogProvider
+      .getHomeArticles()
+      .then((data: Array<any>) => {
+        for (let x of data) {
+          this.loading = false;
+          this.articles.push(x["hits"]["hits"][0]);
+        }
+      })
+      .catch(e => {
+        console.error(e);
+      });
   }
 
   showBlogMenu(): void {

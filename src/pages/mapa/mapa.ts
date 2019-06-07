@@ -38,8 +38,8 @@ export class MapaPage {
   ) {
     console.log(this.navParams);
     
-    this.lat = parseFloat(this.navParams.get("lat"));
-    this.lng = parseFloat(this.navParams.get("lng"));
+    this.lat = this.navParams.get("lat");
+    this.lng = this.navParams.get("lng");
     this.name = this.navParams.get("name");
     this.address = this.navParams.get("address");
     this.coords = this.navParams.get("coords");

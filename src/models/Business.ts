@@ -42,7 +42,7 @@ export default class Business {
   }
 
   get services(): string | boolean {
-    if(!this.productservices) return false;
+    if (!this.productservices) return false;
     let s = this.productservices
       .map(item => {
         return item["service"];
@@ -79,5 +79,15 @@ export default class Business {
 
   get bussinessName() {
     return this.capitalize(this.bn);
+  }
+
+  get location(): object | boolean{
+    if (this.lat && this.lat !== null) {
+      return {
+        lat: parseFloat(this.lat),
+        lon: parseFloat(this.lon)
+      };
+    }
+    return false;
   }
 }

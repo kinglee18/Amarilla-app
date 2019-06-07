@@ -1,19 +1,19 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Blog</ion-title>
+    <ion-title text-center>Blog</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row *ngFor="let item of getCategories()">
-      <ion-col (click)="goToCategory(item)">
-        <img style="width:100%;" src="/assets/imgs/{{item.image}}.jpg" />
-        <div class="overlay">
-          <h1>{{ item.title }}</h1>
-          <div class="card-subtitle">{{item.count}} artículos</div>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div
+    class="card"
+    *ngFor="let item of getCategories()"
+    (click)="goToCategory(item)"
+  >
+    <img src="/assets/imgs/ciudad.jpg" />
+    <div class="overlay">
+      <h1>{{ item.title }}</h1>
+      <div *ngIf="item.count" class="card-subtitle">{{ item.count }} artículos</div>
+    </div>
+  </div>
 </ion-content>

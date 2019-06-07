@@ -18,7 +18,7 @@ export class BlogIndexPage {
     this.categories = this.blogProvider.categories;
     for (let x of this.categories) {
       x["image"] = this.randomNumber(x["imgPrefixName"]);
-      x['count'] = this.navParams.get(x['slug'])
+      this.getArticleInfo(x["slug"], x);
     }
   }
 
@@ -34,5 +34,9 @@ export class BlogIndexPage {
     return `${name}_${Math.floor(Math.random() * limit + 1)}`;
   }
 
-  
+  getArticleInfo(catName: string, item) {
+    this.blogProvider.getByCategory(catName).then((data: Array<any>) => {
+      item["count"] = data["hits"]["total"];
+    }).catch(e=>{console.error(e)});
+  }
 }

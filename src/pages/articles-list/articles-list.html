@@ -5,12 +5,14 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-spinner name="circles" *ngIf="loader"></ion-spinner>
+
   <article-card
     *ngFor="let article of articles"
     [article]="article"
   ></article-card>
 
-  <ion-infinite-scroll (ionInfinite)="paginate($event)">
+  <ion-infinite-scroll (ionInfinite)="paginate($event)" *ngIf="from <= total">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
 

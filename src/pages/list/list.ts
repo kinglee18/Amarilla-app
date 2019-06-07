@@ -56,7 +56,7 @@ export class ListPage {
 
   goAddList(ev) {
     this.page++;
-    if (this.page <= this.total) {
+    if (this.page < this.total) {
       setTimeout(() => {
         this._info
           .getBusiness(
@@ -75,21 +75,22 @@ export class ListPage {
     }
   }
 
-  getDist(lat, lng): string | boolean {
-    if (!lat && !lng && !this.coords["lat"]) return false;
+  getDist(op): string | boolean {
+    if (!op.lat || !op.lon || op.lon == null || !this.coords["lat"])
+      return false;
     let dist = geolib.getDistance(
       {
         latitude: this.coords["lat"],
         longitude: this.coords["lng"]
       },
       {
-        latitude: lat,
-        longitude: lng
+        latitude: op.lat,
+        longitude: op.lon
       }
     );
 
     if (dist < 1000) {
-      return dist + " m";
+      return dist + " metros";
     } else {
       let a = (dist / 1000).toFixed(2);
       if (dist > 20) return false;
