@@ -17,8 +17,14 @@ export class BlogIndexPage {
   ) {
     this.categories = this.blogProvider.categories;
     for (let x of this.categories) {
-      x["image"] = this.randomNumber(x["imgPrefixName"]);
+      x["image"] = this.imageName(x["imgPrefixName"]);
       this.getArticleInfo(x["slug"], x);
+    }
+  }
+
+  ionViewWillEnter() {
+    for (let x of this.categories) {
+      x["image"] = this.imageName(x["imgPrefixName"]);
     }
   }
 
@@ -30,7 +36,7 @@ export class BlogIndexPage {
     this.navCtrl.push("ArticlesListPage", { category: item.slug });
   }
 
-  randomNumber(name: string, limit = 4) {
+  imageName(name: string, limit = 4) {
     return `${name}_${Math.floor(Math.random() * limit + 1)}`;
   }
 

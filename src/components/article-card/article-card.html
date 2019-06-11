@@ -11,8 +11,8 @@
       <ion-row id="article-details">
         <ion-col
           class="ion-text-start"
-          (click)="goToCategory(article._source['categories'][0]['slug'])"
-          >{{ article._source["categories"][0]["title"] }}</ion-col
+          (click)="goToCategory(getCategorie(article._source['categories']).slug)"
+          >{{ getCategorie(article._source["categories"]).title }}</ion-col
         >
         <ion-col class="ion-text-end">{{
           articleDate()

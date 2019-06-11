@@ -23,9 +23,7 @@
   <ion-card>
     <ion-item-divider>
       <ion-card-header id="search-title">
-        <ion-card-title 
-          >Explora cerca de mi</ion-card-title
-        >
+        <ion-card-title>Explora cerca de mi</ion-card-title>
       </ion-card-header></ion-item-divider
     >
 
@@ -34,42 +32,41 @@
         <ion-item (click)="goDirect('bares')">
           <ion-icon name="custom-wine"></ion-icon>
           <span>Bares</span>
-          <ion-icon  class="ion-text-end arrow" name="arrow-forward"></ion-icon>
+          <ion-icon class="ion-text-end arrow" name="arrow-forward"></ion-icon>
         </ion-item>
         <ion-item (click)="goDirect('cafeterias')">
           <ion-icon name="custom-cofee"></ion-icon>
           <span>Cafeterias</span>
-          <ion-icon  class="ion-text-end arrow" name="arrow-forward"></ion-icon>
+          <ion-icon class="ion-text-end arrow" name="arrow-forward"></ion-icon>
         </ion-item>
         <ion-item (click)="goDirect('hospitales')">
           <ion-icon name="custom-hospital"></ion-icon>
           <span>Hospitales</span>
-          <ion-icon  class="ion-text-end arrow" name="arrow-forward"></ion-icon>
+          <ion-icon class="ion-text-end arrow" name="arrow-forward"></ion-icon>
         </ion-item>
         <ion-item (click)="goDirect('taxis')">
           <ion-icon name="custom-car"></ion-icon>
           <span>Taxis</span>
-          <ion-icon  class="ion-text-end arrow" name="arrow-forward"></ion-icon>
+          <ion-icon class="ion-text-end arrow" name="arrow-forward"></ion-icon>
         </ion-item>
         <ion-item (click)="goDirect('restaurantes')">
           <ion-icon name="custom-restaurant"></ion-icon>
           <span>Restaurantes</span>
-          <ion-icon  class="ion-text-end arrow" name="arrow-forward"></ion-icon>
+          <ion-icon class="ion-text-end arrow" name="arrow-forward"></ion-icon>
         </ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
   <ion-spinner name="circles" *ngIf="loading"></ion-spinner>
   <div *ngIf="!loading">
-      <div id="blog-label" >
-          <ion-label>LO NUEVO DEL BLOG</ion-label>
-          <ion-label (click)="showBlogMenu()">Ver blog</ion-label>
-      </div>
-<!--       <article-card
-        *ngFor="let article of articles"
-        [article]="article"
-        [categoryLink]="true"
-      ></article-card> -->
+    <div id="blog-label">
+      <ion-label>LO NUEVO DEL BLOG</ion-label>
+      <ion-label (click)="showBlogMenu()">Ver blog</ion-label>
+    </div>
+    <article-card
+      *ngFor="let article of articles"
+      [article]="article"
+      [categoryLink]="true"
+    ></article-card>
   </div>
-
 </ion-content>

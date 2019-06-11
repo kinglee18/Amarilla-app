@@ -10,7 +10,7 @@
     *ngFor="let item of getCategories()"
     (click)="goToCategory(item)"
   >
-    <img src="/assets/imgs/ciudad.jpg" />
+    <img [src]="'/assets/imgs/'+  item.image +'.jpg'" />
     <div class="overlay">
       <h1>{{ item.title }}</h1>
       <div *ngIf="item.count" class="card-subtitle">{{ item.count }} artículos</div>

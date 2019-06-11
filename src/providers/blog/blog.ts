@@ -5,31 +5,28 @@ import { HttpClient } from "@angular/common/http";
 export class BlogProvider {
   public categories = [
     {
-      slug: "emprendedores",
-      elasticsName: "emprendedores",
+      slug: "tu-negocio",
+      elasticsName: "tu-negocio",
       title: "Tu negocio",
-      imgPrefixName: "emprendedores"
+      imgPrefixName: "negocio"
     },
     {
       slug: "como-cuidarse",
       elasticsName: "¿como cuidarse?",
       title: "¿Cómo cuidarse?",
-      imgPrefixName: "emprendedores"
-      /* imgPrefixName: "cuidarse" */
+      imgPrefixName: "cuidarse"
     },
     {
       slug: "que-comer",
       elasticsName: "¿que comer?",
       title: "¿Qué comer?",
-      imgPrefixName: "emprendedores"
-      /* imgPrefixName: "comer" */
+      imgPrefixName: "comer"
     },
     {
       slug: "quehacer",
       elasticsName: "¿que hacer?",
       title: "¿Qué hacer?",
-      imgPrefixName: "emprendedores"
-      /* imgPrefixName: "hacer" */
+      imgPrefixName: "hacer"
     }
   ];
 
@@ -41,7 +38,7 @@ export class BlogProvider {
     let item = this.searchCategoryBySlugName(category);
     let body = {
       from,
-      index: "blog_rep",
+      index: "blog_secam",
       body: {
         size,
         sort: [{ date: { order: "desc" } }],
