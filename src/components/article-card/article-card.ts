@@ -29,7 +29,7 @@ export class ArticleCardComponent {
 
   articleDate() {
     moment.locale("es");
-    return moment(this.article["_source"]["date"].substr(0, 11)).format(
+    return moment(this.article["_source"]["date"].substr(0, 11), 'YYYY-MM-DD hh:mm:ss').format(
       "DD-MMM-YYYY"
     );
   }

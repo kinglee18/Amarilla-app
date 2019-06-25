@@ -6,7 +6,14 @@ page-tabs {
     .tabs-md .tab-button[aria-selected=true], .tabs-md .tab-button[aria-selected=true] .tab-button-icon  {
         color: white;
     }
-    .tabs-md .tab-button-icon , .tabs-md .tab-button {
+
+    .tabs-md .tab-button[aria-selected=true], .tabs-md .tab-button[aria-selected=true] .tab-button-icon  {
+        color: white;
+    }
+    .tabs-ios .tab-button-icon , .tabs-ios .tab-button {
         color: #a4c3ff;
+    }
+    .tabs-ios .tab-button[aria-selected=true], .tabs-ios .tab-button[aria-selected=true] .tab-button-icon  {
+        color: white;
     }
 }
