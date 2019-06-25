@@ -17,10 +17,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BlogProvider } from '../providers/blog/blog';
 import { ComponentsModule } from '../components/components.module';
-import { ArticleCardComponent } from '../components/article-card/article-card';
-import { ArticlesListPage } from '../pages/articles-list/articles-list';
-import { ArticlesListPageModule } from '../pages/articles-list/articles-list.module';
 import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPageModule } from '../pages/tabs/tabs.module';
 
 
 @NgModule({
@@ -33,7 +31,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     IonicModule.forRoot(MyApp),
     HttpModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -5,11 +5,8 @@ import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
-    TabsPage, 
-    ComponentsModule
   ],
   imports: [
-    IonicPageModule.forChild(TabsPage),
   ]
 })
 export class TabsPageModule {}
