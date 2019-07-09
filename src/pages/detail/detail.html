@@ -4,11 +4,11 @@
 
 <ion-content>
   <ion-card padding>
-    <ion-item id="business-adress">
-      <ion-avatar slot="start" >
-        <img class="square-img" src="{{ negocio.logo }}"/>
+    <ion-item id="business-info">
+      <ion-avatar slot="start"  class="square-img">
+        <img src="{{ negocio.logo }}"/>
       </ion-avatar>
-      <div>
+      <div id="address">
         <b>{{ negocio.bussinessName }}</b>
         <p>{{ negocio.address }}</p>
       </div>

@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { IonicPage, NavController, NavParams } from "ionic-angular";
 import { InformacionProvider } from "../../providers/informacion/informacion";
+import { Geolocation } from "@ionic-native/geolocation";
 
 import * as geolib from "geolib";
 import Business from "../../models/Business";
@@ -22,32 +23,52 @@ export class ListPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public _info: InformacionProvider
+    public _info: InformacionProvider,
+    public geolocation: Geolocation
   ) {
-    this.coords = navParams.get("coords");
     this.searchTerm = navParams.get("searchTerm");
-    this._info
-      .getBusiness(this.searchTerm, this.coords["lng"], this.coords["lat"])
-      .subscribe(
-        data => {
-          if (data["totalResultsNum"] > 0) {
-            this.total = data["totalPages"];
-            for (let business of data["ListRes"]) {
-              this.businesses.push(new Business().deserialize(business));
+
+    this.getUb().then(data => {
+      this._info
+        .getBusiness(this.searchTerm, this.coords["lng"], this.coords["lat"])
+        .subscribe(
+          data => {
+            if (data["totalResultsNum"] > 0) {
+              this.total = data["totalPages"];
+              for (let business of data["ListRes"]) {
+                this.businesses.push(new Business().deserialize(business));
+              }
+            } else {
+              this.errorMessage =
+                "No encontramos ningún negocio referente a tu búsqueda";
             }
-          } else {
+          },
+          error => {
             this.errorMessage =
-              "No encontramos ningún negocio referente a tu búsqueda";
+              "Parece que algo no está funcionando bien, intenta mas tarde";
+          },
+          () => {
+            this.loading = false;
           }
-        },
-        error => {
-          this.errorMessage =
-            "Parece que algo no está funcionando bien, intenta mas tarde";
-        },
-        () => {
-          this.loading = false;
-        }
-      );
+        );
+    });
+  }
+
+  getUb() {
+    return new Promise((resolve, reject) => {
+      this.geolocation
+        .getCurrentPosition()
+        .then(resp => {
+          this.coords["lat"] = resp.coords.latitude;
+          this.coords["lng"] = resp.coords.longitude;
+          resolve();
+        })
+        .catch(error => {
+          this.coords["lat"] = 19.4326018;
+          this.coords["lng"] = -99.1353936;
+          resolve();
+        });
+    });
   }
 
   openDetail(data) {

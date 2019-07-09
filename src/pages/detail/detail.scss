@@ -7,6 +7,7 @@ page-detail {
     ion-item {
       padding-left: 0px;
       font-size: 1.5rem;
+      
     }
   }
   #mapa_detail {
@@ -21,17 +22,22 @@ page-detail {
       font-size: 1.5rem;
     }
   }
-  #business-adress {
+  #business-info {
     padding-left: 0px;
 
     ion-avatar {
       display: inline-block;
       width: 3%;
     }
-    div {
+    #address {
       display: inline-block;
+      width: 90%;
       b {
         font-size: 1.5rem;
+        display: block;
+        white-space: normal;
+      width: 90%;
+
       }
       p {
         white-space: normal;
