@@ -70,7 +70,7 @@ export default class Business {
   }
 
   get site() {
-    return this.paopwo || this.logoUrl;
+    return this.paopwo;
   }
 
   capitalize(text: string) {

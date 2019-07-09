@@ -13,8 +13,8 @@
 
     <ion-list>
       <ion-item *ngFor="let op of businesses" (click)="openDetail(op)">
-        <ion-avatar slot="start" margin-start>
-          <img src="{{ op.logo }}" />
+        <ion-avatar slot="start" margin-start >
+          <img class="square-img" src="{{ op.logo }}" />
         </ion-avatar>
         <div>
           <h2>{{ op.bussinessName }}</h2>
